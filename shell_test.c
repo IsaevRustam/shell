@@ -11,11 +11,11 @@
 #include <wait.h>
 #include <signal.h>
 
-int conv=0,fon=0,fsec=0,forsec=0,fandsec=0;
+int conv=0;
+int fon=0,fsec=0;
+int forsec=0, fandsec=0;
 int fd1[2];
 int executeorder(char **, int );
-
-
 
 void ChangeInOut(char **words, int j) /*перенаправление ввода/вывода*/
 { /*перенаправляет ввод, вывод*/
@@ -402,7 +402,9 @@ int Pipescob(char **words,int j){ /*обработка пайпа со скоб�
 int executeorder(char **words,int j) /*просмотр строки, вызов функции обработки команды*/
 {
     char **comand=NULL;
-    int i=0,a=0,status=0,skob=0,other=0,pid,stat=0,conveer=0;
+    int i=0, a=0, status=0, skob=0;
+    int other=0, stat=0 ,conveer=0;
+    int pid;
     
     for (i=0;i<j-1;i++){
         if (strcmp(words[i],"|")==0 && (other==1 || strcmp(words[i+1],"(")==0)){
